@@ -29,6 +29,7 @@ end
 $stdout.sync = true
 
 require 'yaml'
+require 'erb'
 require 'singleton'
 require 'optparse'
 require 'celluloid'
