@@ -208,7 +208,7 @@ module Sidekiq
     def parse_config(cli)
       opts = {}
       if cli[:config_file] && File.exist?(cli[:config_file])
-        opts = YAML.load_file cli[:config_file]
+        opts = YAML.load(ERB.new(File.read(cli[:config_file])).result)
         queues = opts.delete(:queues) || []
         queues.each { |name, weight| parse_queues(opts, name, weight) }
       end
